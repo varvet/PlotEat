@@ -13,10 +13,10 @@ before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -c 'create database PlotEat_test;' -U postgres
 
 script:
-  - bundle exec rake test
+  - bundle exec rake
   
 after_script:
   - ./cc-test-reporter after-build -t simplecov --exit-code $TRAVIS_TEST_RESULT
