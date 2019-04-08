@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.5.2
+
+services:
+- postgresql
+
+before_script:
+  - psql -c 'create database PlotEat_test;' -U postgres
