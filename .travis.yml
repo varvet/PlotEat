@@ -1,4 +1,8 @@
-language: ruby
+env:
+  global:
+    - CC_TEST_REPORTER_ID=dd3004d18d2c79706e223348a3cdc6946f42540a4f986552dedfbba5eb0647af
+
+language: ruby    
 rvm:
   - 2.5.2
 
@@ -6,4 +10,13 @@ services:
 - postgresql
 
 before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
   - psql -c 'create database PlotEat_test;' -U postgres
+
+script:
+  - bundle exec rake
+  
+after_script:
+  - ./cc-test-reporter after-build -t simplecov --exit-code $TRAVIS_TEST_RESULT
