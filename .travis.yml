@@ -20,3 +20,9 @@ script:
   
 after_script:
   - ./cc-test-reporter after-build -t simplecov --exit-code $TRAVIS_TEST_RESULT
+
+deploy:
+  provider: heroku
+  api_key: 025109e4-f961-45c1-843c-df9d0ee03f53
+  app: 
+    development: PlotEat
