@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'recipes/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root controller: :recipes, action: :index
+  resources :recipes, only: :index
 end
