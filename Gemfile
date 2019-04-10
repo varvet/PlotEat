@@ -20,6 +20,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false, group: :test
+  gem 'pry-byebug'
+  gem 'pry-byebug'
   
 end
 
