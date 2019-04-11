@@ -19,6 +19,8 @@ group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "rubocop", "0.66", require: false
   gem "rubocop-rspec"
+  gem "cucumber-rails", require: false
+  gem "database_cleaner"
   gem "rspec-rails"
   gem "shoulda-matchers"
   gem "simplecov", require: false, group: :test
