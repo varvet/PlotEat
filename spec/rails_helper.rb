@@ -1,10 +1,12 @@
-require 'spec_helper'
-require 'simplecov'
+# frozen_string_literal: true
+
+require "spec_helper"
+require "simplecov"
 SimpleCov.start
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path("../config/environment", __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'rspec/rails'
+require "rspec/rails"
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -25,7 +27,6 @@ end
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
-    with.library :rails 
+    with.library :rails
   end
 end
-

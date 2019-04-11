@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
@@ -6,7 +8,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
   end
-  
+
   def new
     @recipe = Recipe.new
   end
@@ -18,14 +20,13 @@ class RecipesController < ApplicationController
       redirect_to recipe_path(@recipe)
     else
       flash[:error] = "Something went wrong"
-      render 'new'
+      render "new"
     end
   end
-  
-  
+
   private
+
   def recipe_params
     params.require(:recipe).permit(:title, :description)
   end
-  
 end
