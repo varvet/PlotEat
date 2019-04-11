@@ -11,7 +11,7 @@ development:
   database: PlotEat_development
 
 
-test:
+test: &test
   <<: *default
   database: PlotEat_test
 
@@ -21,3 +21,6 @@ production:
   database: PlotEat_production
   username: PlotEat
   password: <%= ENV['PLOTEAT_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
