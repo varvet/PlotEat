@@ -1,0 +1,6 @@
+
+<%= form_with model: @recipe do |form| %>
+ <%= form.text_field :title, placeholder: "Recipe title"%>
+ <%= form.text_area :description, placeholder: "Recipe description" %>
+ <%= form.submit "Create" %>
+<% end %> 

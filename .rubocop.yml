@@ -1,7 +1,21 @@
+# See https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
 require: rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.5.2
+  TargetRubyVersion: 2.6
+  Exclude:
+    - .rubocop.yml
+    - db/schema.rb
+    - node_modules/**/*
+    - public/**/*
+    - tmp/**/*
+    - storage/**/*
+    - vendor/**/*
+    - log/**/*
+    - app/assets/**/*
+    - app/javascript/**/*
+    - bin/bundle
 
 Rails:
   Enabled: true
@@ -145,10 +159,6 @@ Lint/UnderscorePrefixedVariableName:
   Description: "Do not use prefix `_` for a variable that is used."
   Enabled: true
 
-Lint/UnneededCopDisableDirective:
-  Description: "Checks for rubocop:disable comments that can be removed."
-  Enabled: true
-
 Lint/UnreachableCode:
   Enabled: true
 
@@ -189,8 +199,6 @@ Metrics/ModuleLength:
 
 Metrics/MethodLength:
   Max: 25
-  Exclude:
-    - db/migrate/**/*.rb # mostly create table blocks
 
 Metrics/LineLength:
   Max: 125
@@ -204,10 +212,13 @@ Metrics/LineLength:
 Metrics/BlockLength:
   Enabled: true
   Exclude:
-    - config/environments/*.rb
-    - config/routes.rb
-    - db/seeds.rb
+    - tolken.gemspec
     - spec/**/*
+    - Rakefile
+    - bin/setup
+
+Metrics/PerceivedComplexity:
+  Enabled: true
 
 Metrics/BlockNesting:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#three-is-the-number-thou-shalt-count"
@@ -222,8 +233,6 @@ Metrics/AbcSize:
   Description: "A calculated magnitude based on number of assignments, branches, and conditions."
   Reference: "http://c2.com/cgi/wiki?AbcMetric"
   Max: 20
-  Exclude:
-    - db/migrate/**/*.rb # mostly create table blocks
 
 Metrics/ParameterLists:
   Description: "Avoid parameter lists longer than three or four parameters."
@@ -251,6 +260,19 @@ Naming/BinaryOperatorParameterName:
   Enabled: false # don't require variable to <=> to be named just "other"
 
 # -- Layout
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Layout/BlockAlignment:
+  Enabled: true
+
+Layout/ConditionPosition:
+  StyleGuide: "https://github.com/bbatsov/ruby-style-guide#same-line-condition"
+  Enabled: true
+
+Layout/DefEndAlignment:
+  Enabled: true
 
 Layout/IndentArray:
   Enabled: false
@@ -297,10 +319,6 @@ Layout/FirstParameterIndentation:
 Layout/DotPosition:
   EnforcedStyle: leading
 
-Layout/ConditionPosition:
-  StyleGuide: "https://github.com/bbatsov/ruby-style-guide#same-line-condition"
-  Enabled: true
-
 Layout/EmptyLinesAroundBlockBody:
   EnforcedStyle: no_empty_lines
 
@@ -312,15 +330,6 @@ Layout/EmptyLinesAroundModuleBody:
 
 Layout/ExtraSpacing:
   AllowForAlignment: true
-
-Layout/DefEndAlignment:
-  Enabled: true
-
-Layout/EndAlignment:
-  EnforcedStyleAlignWith: variable
-
-Layout/BlockAlignment:
-  Enabled: true
 
 Layout/IndentationConsistency:
   EnforcedStyle: normal
@@ -376,8 +385,6 @@ Layout/SpaceBeforeComma:
 
 Layout/LeadingCommentSpace:
   Enabled: true
-  Exclude:
-    - spec/teaspoon_env.rb
 
 # -- Style
 
@@ -395,10 +402,8 @@ Style/DoubleNegation:
   Enabled: false  # Allow !!
 
 Style/AsciiComments:
-  AllowedChars:
-    - å
-    - ä
-    - ö
+  Enabled: false
+  # Or we can't add comments about Swedish characters for example
 
 Style/InverseMethods:
   Description: "bad: `!foo.blank?` ok: `foo.present?`"
@@ -504,6 +509,7 @@ Style/PercentLiteralDelimiters:
     "%w": "[]"
     "%W": "[]"
     "%Q": "{}"
+    "%q": "{}"
 
 Style/PercentQLiterals:
   EnforcedStyle: upper_case_q
@@ -599,8 +605,19 @@ Style/MixinUsage:
     - bin/setup
 
 Style/StderrPuts:
-  Exclude:
-    - bin/yarn
+  Enabled: true
+
+Style/BlockComments:
+  Enabled: false # Just for big blocks, ok?
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/MutableConstant:
+  Enabled: true
+
+Style/Next:
+  Enabled: false
 
 # -- Rails
 
@@ -656,6 +673,9 @@ Bundler/OrderedGems:
 
 # -- RSpec
 
+RSpec/EmptyLineAfterFinalLet:
+  Enabled: true
+
 RSpec/DescribedClass:
   Description: "Forces usage of described_class"
   Enabled: false
@@ -666,17 +686,16 @@ RSpec/DescribeClass:
   Exclude:
     - spec/views/**/*_spec.rb
     - spec/requests/**/*_spec.rb
+    - spec/system/**/*_spec.rb
 
 RSpec/AnyInstance:
   Enabled: true
   Exclude:
-    - spec/features/**/*_spec.rb # We don't have access to the instances in feature tests
+    - spec/requests/**/*_spec.rb
 
 RSpec/ExampleLength:
   Enabled: true
   Max: 30
-  Exclude:
-    - spec/features/**/*_spec.rb # It's usually very expensive to keep scenarios short
 
 RSpec/MultipleExpectations:
   Enabled: false
@@ -685,9 +704,6 @@ RSpec/MultipleExpectations:
 
 RSpec/ExpectActual:
   Enabled: true
-  Exclude:
-    - spec/requests/**/*_spec.rb # route_to matcher
-    - spec/routing/**/*_spec.rb # route_to matcher
 
 RSpec/RepeatedExample:
   Enabled: true
@@ -702,7 +718,7 @@ RSpec/MessageSpies:
 
 RSpec/NestedGroups:
   Enabled: true
-  Max: 4
+  Max: 5
 
 RSpec/HookArgument:
   Enabled: true
@@ -712,14 +728,3 @@ RSpec/NotToNot:
 
 RSpec/EmptyLineAfterSubject:
   Enabled: true
-
-# -- AllCops
-
-AllCops:
-  Exclude:
-    - db/schema.rb
-    - tmp/**/*
-    - vendor/**/*
-    - node_modules/**/*
-    - Rakefile
-    - .rubocop.yml

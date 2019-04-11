@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   config.cache_classes = true
 
@@ -5,7 +7,7 @@ Rails.application.configure do
 
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
-    'Cache-Control' => "public, max-age=#{1.hour.to_i}"
+    "Cache-Control" => "public, max-age=#{1.hour.to_i}"
   }
 
   config.consider_all_requests_local       = true
@@ -22,5 +24,4 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
 
   config.active_support.deprecation = :stderr
-
 end
