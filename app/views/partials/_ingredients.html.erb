@@ -1,0 +1,8 @@
+<h3>Ingredients:</h3>
+
+<br/>
+<% @recipe.ingredients.each do |ingredient| %>
+  <div>
+    <%= "qty: #{ ingredient.quantity} name: #{ ingredient.name}" %>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<%= form_with model: @recipe do |form| %>
+  <%= form.text_field :title, placeholder: "Recipe title"%>
+  <%= form.text_area :description, placeholder: "Recipe description" %>
+  <%= form.submit "Edit" %>
+<% end %> 
+
+<%= form_with url: recipe_add_ingredient_path(@recipe), local: false do |form| %>
+  <%= form.text_field :name, placeholder: "Ingredient name" %>
+  <%= form.number_field :quantity, placeholder: "Ingredient quantity" %>
+  <%= form.submit "Add ingredient"%>
+<% end %>
+
+
+<div class="ingredients" id="ingredients">
+    <%= render partial: 'partials/ingredients'%>
+</div>
