@@ -7,7 +7,6 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    binding.pry
   end
 
   def new
@@ -17,7 +16,6 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      binding.pry
       flash[:success] = "Recipe successfully created"
       redirect_to recipe_path(@recipe)
     else
@@ -26,9 +24,30 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def add_ingredient
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe.ingredients.create(ingredient_params)
+
+    if @recipe.ingredients.persisted?
+      flash[:success] = "Ingredient successfully added"
+      render :ingredients
+    else
+      flash[:error] = "Something went wrong"
+      render "edit"
+    end
+  end
+
   private
 
   def recipe_params
     params.require(:recipe).permit(:title, :description)
+  end
+
+  def ingredient_params
+    params.permit(:name, :quantity)
   end
 end
