@@ -1,3 +1,7 @@
+<%=link_to  "Edit recipe", edit_recipe_path%>
 <h3><%= @recipe.title %></h3>
-<p><%= %>
+<div class="ingredients" id="ingredients">
+    <%= render partial: 'partials/ingredients'%>
+</div>
+<p><%= %></p>
 <p><%= @recipe.description %></p>
