@@ -25,6 +25,8 @@ group :development, :test do
   gem "shoulda-matchers"
   gem "simplecov", require: false, group: :test
   gem "pry-rails"
+  gem "chromedriver-helper"
+  gem "selenium-webdriver"
 end
 
 group :development do
