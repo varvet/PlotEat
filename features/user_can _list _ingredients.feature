@@ -8,11 +8,11 @@ Feature: User can  list  ingredients
     Given I visit the site
       And I click "Create recipe"
       And I fill in "Recipe title" with "Granny's meatloaf"
-      And I fill in "ingredient name" with "Minced meat"
-      And I fill in "ingredient quantity" with "2"
+      And I fill in "Ingredient name" with "Minced meat"
+      And I fill in "Ingredient quantity" with "2"
       And I fill in "Recipe description" with "With love from Granny!"
       And I click "Create"
     Then I should see "Granny's meatloaf"
-      And I should see "2 st for minced meat"
+      And I should see "2st Minced meat"
       And I should see "With love from Granny!"
 
