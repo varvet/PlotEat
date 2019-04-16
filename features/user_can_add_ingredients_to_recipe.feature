@@ -1,3 +1,4 @@
+@javascript
 Feature: User can add ingredients to a recipe
 
   As a user
@@ -15,7 +16,5 @@ Feature: User can add ingredients to a recipe
       And I fill in "Ingredient name" with "Minced meat"
       And I fill in "Ingredient quantity" with "2"
     When I click "Add ingredient"
-    Then I should see "Granny's meatloaf"
-      And I should see "2st Minced meat"
-      And I should see "With love from Granny!"
+    Then I should see "qty: 2 name: Minced meat"
 
