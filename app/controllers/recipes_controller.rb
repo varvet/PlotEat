@@ -32,7 +32,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @recipe.ingredients.create(ingredient_params)
 
-    if @recipe.ingredients.persisted?
+    if @recipe.ingredients.last.persisted?
       flash[:success] = "Ingredient successfully added"
       render :ingredients
     else
