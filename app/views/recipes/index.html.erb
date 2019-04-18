@@ -1,8 +1,9 @@
-<h1>Recipes</h1>
+<div class="index_container">
 
-<%=link_to  "Create recipe", new_recipe_path%>
-<br/>
-<% @recipes.each do |recipe| %>
-<div><%= link_to recipe.title, recipe_path(recipe) %></div>
+  <h1 class="recipe_title">Recipes</h1>
 
-<% end %>
+  <br/>
+  <% @recipes.each do |recipe| %>
+  <div><%= link_to recipe.title, recipe_path(recipe) %></div>
+  <% end %>
+</div>

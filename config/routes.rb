@@ -2,5 +2,7 @@
 
 Rails.application.routes.draw do
   root controller: :recipes, action: :index
-  resources :recipes
+  resources :recipes do
+    post "add_ingredient", to: "recipes#add_ingredient", as: "add_ingredient"
+  end
 end
