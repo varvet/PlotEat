@@ -16,5 +16,5 @@ Feature: User can add ingredients to a recipe
       And I fill in "Ingredient name" with "Minced meat"
       And I fill in "Ingredient quantity" with "2"
     When I click "Add ingredient"
-    Then I should see "qty: 2 name: Minced meat"
+    Then I should see "quantity: 2 item: Minced meat"
 

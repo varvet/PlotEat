@@ -1,5 +1,28 @@
-body {
-  margin: 0;
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+.header {
+  margin: 10px;
 }
 
+.index_container {
+  text-align: center;
+}
 
+.show_recipe {
+  text-align: center;
+}
+
+.new_recipe {
+  text-align: center;
+}
+
+.edit_recipe {
+  text-align: center;
+}
+
+.form-control {
+  margin: auto;
+  width: 40%;
+  min-width: 200px;
+}
