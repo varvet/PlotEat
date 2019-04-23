@@ -22,3 +22,10 @@ Given("I visit the {string} page") do |recipe_title|
   recipe = Recipe.find_by(title: recipe_title)
   visit recipe_path(recipe)
 end
+
+When("I click {string} for {string}") do |button, recipe_title|
+  recipe = Recipe.find_by(title: recipe_title)
+  within("#recipe_#{recipe.id}") do
+  click_on button
+  end
+end

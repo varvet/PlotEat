@@ -4,6 +4,8 @@
 
   <br/>
   <% @recipes.each do |recipe| %>
-  <div><%= link_to recipe.title, recipe_path(recipe) %></div>
+  <div id="<%=dom_id(recipe)%>"><%= link_to recipe.title, recipe_path(recipe) %>
+  <%=link_to  "Add to menu", menu_path, class: "btn btn-primary"%>
+  </div>
   <% end %>
 </div>
