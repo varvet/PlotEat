@@ -29,3 +29,11 @@ When("I click {string} for {string}") do |button, recipe_title|
     click_on button
   end
 end
+
+Given("there is a menu") do
+  @menu = Menu.create
+end
+
+When("I visit menu page") do
+  visit menu_path(@menu)
+end

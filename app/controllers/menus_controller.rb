@@ -8,4 +8,8 @@ class MenusController < ApplicationController
     flash[:success] = "Recipe was added to menu"
     redirect_to controller: :recipes, action: :index
   end
+
+  def show
+    @menu = Menu.first
+  end
 end

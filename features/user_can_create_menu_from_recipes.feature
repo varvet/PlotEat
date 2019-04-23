@@ -11,14 +11,14 @@ Feature: User can create menu from recipes
       | Summer salad        | It will feed your soul |
       | Heart warming cacao | Nice and toasty        |
 
+      And there is a menu
+
   Scenario: User creates menu from recipes
     Given I visit the site
     When I click "Add to menu" for "Granny's meatloaf"
-      And I select "Monday"
     Then I should see "Recipe was added to menu"
     When I click "Add to menu" for "Summer salad"
-      And I select "Tuesday"
     Then I should see "Recipe was added to menu"
-    Then I should see "Monday, Granny's meatloaf"
-      And I should see "Tuesday, Summar salad"
-
+    When I visit menu page
+    Then I should see "Granny's meatloaf"
+      And I should see "Summer salad"
