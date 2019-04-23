@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :recipes do
     post "add_ingredient", to: "recipes#add_ingredient", as: "add_ingredient"
   end
+  resources :menus, only: [:update]
 end
