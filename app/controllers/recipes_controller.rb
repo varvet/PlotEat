@@ -14,32 +14,33 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
-  def create
-    @recipe = Recipe.new(recipe_params)
-    if @recipe.save
-      flash[:success] = "Recipe successfully created"
-      redirect_to recipe_path(@recipe)
+  def create # rubocop:disable Metrics/AbcSize
+    if params[:commit] == "Add ingredient"
+      @recipe = Recipe.find(params[:id])
+      @recipe.ingredients.create(ingredient_params)
+
+      if @recipe.ingredients.last.persisted?
+        flash[:success] = "Ingredient successfully added"
+        render :ingredients
+      else
+        flash[:error] = "Something went wrong"
+        render "edit"
+      end
+
     else
-      flash[:error] = "Something went wrong"
-      render "new"
+      @recipe = Recipe.new(recipe_params)
+      if @recipe.save
+        flash[:success] = "Recipe successfully created"
+        redirect_to recipe_path(@recipe)
+      else
+        flash[:error] = "Something went wrong"
+        render "new"
+      end
     end
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
-  end
-
-  def add_ingredient
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe.ingredients.create(ingredient_params)
-
-    if @recipe.ingredients.last.persisted?
-      flash[:success] = "Ingredient successfully added"
-      render :ingredients
-    else
-      flash[:error] = "Something went wrong"
-      render "edit"
-    end
   end
 
   private
