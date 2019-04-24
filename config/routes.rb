@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
   root controller: :recipes, action: :index
-  resources :recipes
+  resources :recipes do
+    resources :ingredients, only: [:create]
+  end
   resources :menus, only: %i[show update]
 end

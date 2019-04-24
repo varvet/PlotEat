@@ -14,28 +14,14 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
-  def create # rubocop:disable Metrics/AbcSize
-    if params[:commit] == "Add ingredient"
-      @recipe = Recipe.find(params[:id])
-      @recipe.ingredients.create(ingredient_params)
-
-      if @recipe.ingredients.last.persisted?
-        flash[:success] = "Ingredient successfully added"
-        render :ingredients
-      else
-        flash[:error] = "Something went wrong"
-        render "edit"
-      end
-
+  def create
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      flash[:success] = "Recipe successfully created"
+      redirect_to recipe_path(@recipe)
     else
-      @recipe = Recipe.new(recipe_params)
-      if @recipe.save
-        flash[:success] = "Recipe successfully created"
-        redirect_to recipe_path(@recipe)
-      else
-        flash[:error] = "Something went wrong"
-        render "new"
-      end
+      flash[:error] = "Something went wrong"
+      render "new"
     end
   end
 
@@ -47,9 +33,5 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :description)
-  end
-
-  def ingredient_params
-    params.permit(:name, :quantity)
   end
 end
