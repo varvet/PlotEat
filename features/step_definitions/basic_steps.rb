@@ -37,3 +37,5 @@ end
 When("I visit menu page") do
   visit menu_path(@menu)
 end
+
+

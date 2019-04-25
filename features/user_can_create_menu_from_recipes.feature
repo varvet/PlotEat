@@ -1,5 +1,6 @@
 Feature: User can create menu from recipes
 
+
   As a user
   in order of planning my week
   I want to be able to create a menu
@@ -16,9 +17,8 @@ Feature: User can create menu from recipes
   Scenario: User creates menu from recipes
     Given I visit the site
     When I click "Add to menu" for "Granny's meatloaf"
-    Then I should see "Recipe was added to menu"
-    When I click "Add to menu" for "Summer salad"
-    Then I should see "Recipe was added to menu"
-    When I visit menu page
+      And I click "Add to menu" for "Summer salad"
+      And  I visit menu page
     Then I should see "Granny's meatloaf"
+    Then Show me the page
       And I should see "Summer salad"

@@ -4,18 +4,8 @@ class MenusController < ApplicationController
   def update
     @menu = Menu.find(params[:id])
     recipe = Recipe.find(params[:recipe_id])
-
-    if @menu && recipe
-      if !@menu.recipes.include?(recipe)
-        @menu.recipes << recipe
-        flash[:success] = "Recipe was added to menu"
-      else
-        flash[:notice] = "Menu allready has this recipe"
-      end
-      redirect_to controller: :recipes, action: :index
-    else
-      flash[:error] = "Something went wrong"
-    end
+    @menu.recipes << recipe
+    redirect_to controller: :recipes, action: :index
   end
 
   def show
