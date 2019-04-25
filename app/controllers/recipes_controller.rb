@@ -3,6 +3,7 @@
 class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
+    @menu = Menu.first
   end
 
   def show
@@ -28,26 +29,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-  def add_ingredient
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe.ingredients.create(ingredient_params)
-
-    if @recipe.ingredients.last.persisted?
-      flash[:success] = "Ingredient successfully added"
-      render :ingredients
-    else
-      flash[:error] = "Something went wrong"
-      render "edit"
-    end
-  end
-
   private
 
   def recipe_params
     params.require(:recipe).permit(:title, :description)
-  end
-
-  def ingredient_params
-    params.permit(:name, :quantity)
   end
 end

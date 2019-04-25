@@ -29,6 +29,7 @@ group :development, :test do
   gem "pry-rails"
   gem "chromedriver-helper"
   gem "selenium-webdriver"
+  gem "launchy"
 end
 
 group :development do
