@@ -6,7 +6,7 @@ Feature: User creates an account
 
   Scenario: User can sign up
     Given I visit the site
-    When I click "Sign Up"
+    When I click "Sign up"
       And I fill in "Email" with "groot@thegardians.com"
       And I fill in "Password" with "iamgroot"
       And I fill in "Password confirmation" with "iamgroot"
