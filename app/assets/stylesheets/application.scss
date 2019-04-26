@@ -63,5 +63,27 @@
   font-family: 'Courgette', cursive;
   font-size: 4rem;
   text-align: center;
+}
 
+.registration_title {
+  margin: 0;
+  color: #026670;
+  font-family: 'Courgette', cursive;
+  font-size: 4rem;
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 80px;
+}
+
+.form-group {
+ text-align: center;
+ padding-top: 7px;
+}
+
+.form-control {
+  align-items: flex-end;
+}
+
+.registration-button {
+  text-align: center;
 }

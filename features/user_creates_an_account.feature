@@ -7,10 +7,8 @@ Feature: User creates an account
   Scenario: User can sign up
     Given I visit the site
     When I click "Sign up"
-      And I fill in "Email" with "groot@thegardians.com"
+      And I fill in "Email" with "groot@theguardians.com"
       And I fill in "Password" with "iamgroot"
       And I fill in "Password confirmation" with "iamgroot"
-      And I fill in "Name" with "Groot TheFloraColossi"
-      And I click "Sign up"
+      And I click "Register"
     Then I should see "Welcome! You have signed up successfully"
-      And the name for "groot@thegardians.com" should be "Groot TheFloraColossi"
