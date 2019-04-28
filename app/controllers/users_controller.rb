@@ -12,7 +12,13 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome! You have signed up successfully"
       redirect_to root_path
     else
-      render "new"
+      if @user.errors.messages[:password] && @user.errors.messages[:password_confirmation] != []
+        flash[:error] = "Password has to be minimum 6 caracters"
+      elsif @user.errors.messages[:password_confirmation]
+        flash[:error] = "Accont not created passwords don't match"
+      end
+      # flash[:error] = @user.errors.messages
+      redirect_to new_user_path
     end
   end
 
@@ -22,3 +28,8 @@ class UsersController < ApplicationController
     params.permit(:email, :password, :password_confirmation)
   end
 end
+
+#  case
+#       when @user.errors.messages[:password_confirmation]
+#         flash[:error] = "Accont not created passwords don't match"
+#       end

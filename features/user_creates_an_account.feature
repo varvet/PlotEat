@@ -12,3 +12,12 @@ Feature: User creates an account
       And I fill in "Password confirmation" with "iamgroot"
       And I click "Register"
     Then I should see "Welcome! You have signed up successfully"
+
+  Scenario: User passwords don't mach
+    Given I visit the site
+    When I click "Sign up"
+      And I fill in "Email" with "groot@theguardians.com"
+      And I fill in "Password" with "iamgroot"
+      And I fill in "Password confirmation" with "12345678"
+      And I click "Register"
+    Then I should see "Accont not created passwords don't match"
