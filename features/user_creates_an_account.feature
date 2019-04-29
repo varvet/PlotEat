@@ -20,4 +20,13 @@ Feature: User creates an account
       And I fill in "Password" with "iamgroot"
       And I fill in "Password confirmation" with "12345678"
       And I click "Register"
-    Then I should see "Accont not created passwords don't match"
+    Then I should see "Account not created, passwords don't match"
+
+  Scenario: User password is too short
+    Given I visit the site
+    When I click "Sign up"
+      And I fill in "Email" with "groot@theguardians.com"
+      And I fill in "Password" with "1234"
+      And I fill in "Password confirmation" with "1234"
+      And I click "Register"
+    Then I should see "Password has to be minimum 6 caracters"
