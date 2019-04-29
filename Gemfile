@@ -16,8 +16,7 @@ gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap", "~> 4.0.0"
 gem "jquery-rails"
-gem "sorcery"
-gem "validates_email_format_of"
+gem "sorcery", "~> 0.13.0"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]

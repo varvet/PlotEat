@@ -3,7 +3,9 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  validates :email, uniqueness: true, email_format: { message: "has invalid format" }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 6 }
   validates :password, confirmation: true
 end
