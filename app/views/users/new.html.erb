@@ -1,6 +1,6 @@
 <h2 class="registration_title">Registration</h2>
 
-<%= form_with url: @user, local:true do |f| %>
+<%= form_with model: @user, local:true do |f| %>
   <%
 =begin%>
  <% if @user.errors.messages %>
