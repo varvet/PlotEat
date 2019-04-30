@@ -20,5 +20,4 @@ Feature: User can create menu from recipes
       And I click "Add to menu" for "Summer salad"
       And  I visit menu page
     Then I should see "Granny's meatloaf"
-    Then Show me the page
       And I should see "Summer salad"
