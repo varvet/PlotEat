@@ -6,18 +6,29 @@ Feature: User can create menu from recipes
   I want to be able to create a menu
 
   Background:
-    Given these recipes exist
+
+    Given we have the following users
+      | email                   | password     |
+      | groot@theguardians.com  | iamgroot     |
+      | rocket@theguardians.com | watsaraccoon |
+
+      And these recipes exist
       | title               | description            |
       | Granny's meatloaf   | With love from Granny! |
       | Summer salad        | It will feed your soul |
       | Heart warming cacao | Nice and toasty        |
-
       And there is a menu
+      And I visit the site
 
   Scenario: User creates menu from recipes
-    Given I visit the site
+      And logged in as "groot@theguardians.com" password "iamgroot"
     When I click "Add to menu" for "Granny's meatloaf"
       And I click "Add to menu" for "Summer salad"
       And  I visit menu page
     Then I should see "Granny's meatloaf"
       And I should see "Summer salad"
+
+  Scenario: User wants to add recipe to menu without logging in
+    Given I click "Add to menu" for "Granny's meatloaf"
+    Then I should be on the log in page
+      And I should see "You have to authenticate to access this page."
