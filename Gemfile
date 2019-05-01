@@ -31,6 +31,7 @@ group :development, :test do
   gem "chromedriver-helper"
   gem "selenium-webdriver"
   gem "launchy"
+  gem "factory_bot_rails"
 end
 
 group :development do
