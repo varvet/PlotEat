@@ -40,7 +40,8 @@ end
 
 Given("we have the following users") do |table|
   table.hashes.each do |field|
-    create(:user, field)
+    user = create(:user, field)
+    Menu.create(user: user)
   end
 end
 
