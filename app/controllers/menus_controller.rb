@@ -10,6 +10,6 @@ class MenusController < ApplicationController
   end
 
   def show
-    @menu = Menu.first
+    @menu = Menu.find(params[:id])
   end
 end

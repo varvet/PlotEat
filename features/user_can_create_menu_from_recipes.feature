@@ -26,7 +26,7 @@ Feature: User can create menu from recipes
       And logged in as "groot@theguardians.com" password "iamgroot"
     When I click "Add to menu" for "Granny's meatloaf"
       And I click "Add to menu" for "Summer salad"
-      And  I visit menu page
+      And I click "My menu"
     Then I should see "Granny's meatloaf"
       And I should see "Summer salad"
 

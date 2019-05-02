@@ -34,10 +34,6 @@ Given("there is a menu") do
   @menu = Menu.create
 end
 
-When("I visit menu page") do
-  visit menu_path(@menu)
-end
-
 Given("we have the following users") do |table|
   table.hashes.each do |field|
     user = create(:user, field)
