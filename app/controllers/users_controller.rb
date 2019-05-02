@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(params[:user][:email], params[:user][:password])
+      Menu.create(user: @user)
       flash[:success] = "Welcome! You have signed up successfully"
       redirect_to root_path
     else

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MenusController < ApplicationController
+  skip_before_action :require_login
   def update
     @menu = Menu.find(params[:id])
     recipe = Recipe.find(params[:recipe_id])
