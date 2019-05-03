@@ -43,12 +43,13 @@
   text-align: center;
 }
 
-.recipes_list {
+.recipe_grid {
   display: grid;
-  align-items: center;
-  justify-items: center;
-  margin-right: 40%;
-  margin-left: 40%;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.recipes_list {
+  text-align: right;
 }
 
 .recipes_list a {
