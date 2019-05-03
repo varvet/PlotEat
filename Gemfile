@@ -14,7 +14,7 @@ gem "uglifier", ">= 1.3.0"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
-gem "bootstrap", "~> 4.0.0"
+gem "bootstrap", "~> 4.3.1"
 gem "jquery-rails"
 gem "sorcery", "~> 0.13.0"
 
@@ -31,6 +31,7 @@ group :development, :test do
   gem "chromedriver-helper"
   gem "selenium-webdriver"
   gem "launchy"
+  gem "factory_bot_rails"
 end
 
 group :development do

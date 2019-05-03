@@ -6,7 +6,15 @@ Feature: User can add ingredients to a recipe
   I need to be able to add ingredients to recipes
 
   Background:
-    Given these recipes exist
+
+    Given we have the following users
+      | email                   | password     |
+      | groot@theguardians.com  | iamgroot     |
+      | rocket@theguardians.com | watsaraccoon |
+      And I visit the site
+      And logged in as "groot@theguardians.com" password "iamgroot"
+
+      And these recipes exist
       | title             | description            |
       | Granny's meatloaf | With love from Granny! |
 
@@ -17,4 +25,5 @@ Feature: User can add ingredients to a recipe
       And I fill in "Ingredient quantity" with "2"
     When I click "Add ingredient"
     Then I should see "quantity: 2 item: Minced meat"
+
 

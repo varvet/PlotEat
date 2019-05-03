@@ -1,9 +1,25 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+if Rails.env.development?
+  Recipe.destroy_all
+  User.destroy_all
+  user = User.create(
+    email: "groot@theguardians.com",
+    password: "iamgroot"
+  )
+  Menu.create(user: user)
+
+  user = User.create(
+    email: "rocket@theguardians.com",
+    password: "watsaraccoon"
+  )
+  Menu.create(user: user)
+
+  recipe = Recipe.create(
+    title: "Turkey Sliders",
+    description: "Mini turkey burgers made with goat cheese and sun-dried tomatoes! This recipe makes great regular sized burgers, too!"
+  )
+  Ingredient.create(name: "ground turkey", quantity: 1, recipe: recipe)
+  Ingredient.create(name: "goat cheese", quantity: 0.34, recipe: recipe)
+  Ingredient.create(name: "sundried tomatoes", quantity: 0.25, recipe: recipe)
+end

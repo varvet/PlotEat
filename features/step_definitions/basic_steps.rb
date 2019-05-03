@@ -34,6 +34,16 @@ Given("there is a menu") do
   @menu = Menu.create
 end
 
-When("I visit menu page") do
-  visit menu_path(@menu)
+Given("we have the following users") do |table|
+  table.hashes.each do |field|
+    user = create(:user, field)
+    Menu.create(user: user)
+  end
+end
+
+Given("logged in as {string} password {string}") do |email, password|
+  click_on "Log in"
+  fill_in "Email", with: email
+  fill_in "Password", with: password
+  click_on "Submit"
 end

@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class RecipesController < ApplicationController
+  skip_before_action :require_login, only: %i[index show]
   def index
     @recipes = Recipe.all
-    @menu = Menu.first
+    # @menu = current_user.menu if current_user
   end
 
   def show
