@@ -18,8 +18,6 @@ Feature: User can create menu from recipes
       | Summer salad        | It will feed your soul |
       | Heart warming cacao | Nice and toasty        |
       And there is a menu
-
-
       And I visit the site
 
   Scenario: User creates menu from recipes
