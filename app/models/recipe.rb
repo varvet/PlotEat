@@ -2,7 +2,8 @@
 
 class Recipe < ApplicationRecord
   has_many :ingredients, dependent: :destroy
-  has_and_belongs_to_many :menus
+  has_many :menu_recipes
+  has_many :menus, through: :menu_recipes
   validates :title, presence: true
   validates :description, presence: true
 end

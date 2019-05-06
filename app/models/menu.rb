@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Menu < ApplicationRecord
-  has_and_belongs_to_many :recipes
+  has_many :menu_recipes
+  has_many :recipes, through: :menu_recipes
   belongs_to :user
 end

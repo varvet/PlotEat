@@ -7,6 +7,7 @@ RSpec.describe Recipe, type: :model do
 
   describe "Association" do
     it { is_expected.to have_many :ingredients }
-    it { is_expected.to have_and_belong_to_many :menus }
+    it { is_expected.to have_many :menus }
+    it { is_expected.to have_many :menu_recipes }
   end
 end
