@@ -18,24 +18,24 @@ Feature: User can create shopping list from ingredients
       | Heart warming cacao | Nice and toasty        |
 
       And "Granny's meatloaf" has these ingredients
-      | ingredient  | quantity |
+      | name        | quantity |
       | Ground beef | 1        |
       | Bacon       | 2        |
       | Bread       | 4        |
 
 
       And "Summer salad" has these ingredients
-      | item  | quantity |
+      | name  | quantity |
       | Salad | 10       |
       | Mango | 1        |
       | Bread | 1        |
 
       And "groot@theguardians.com" has the following recipes in his menu
-      | title             | description            |
-      | Granny's meatloaf | With love from Granny! |
-      | Summer salad      | It will feed your soul |
-      And there is a menu
+      | title             |
+      | Granny's meatloaf |
+      | Summer salad      |
       And I visit the site
+      And logged in as "groot@theguardians.com" password "iamgroot"
 
   Scenario: User creates a shoppinglist
     Given I am on the menu page
