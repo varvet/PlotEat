@@ -4,7 +4,8 @@
 <br>
   <% @shoppinglist.each do |recipe| %>
     <% recipe.ingredients.each do |ingredient| %>
-    <p><%= ingredient.name %></p>
+    <p><%= ingredient.quantity %>
+    <%= ingredient.name %></p>
   <% end %>
 <% end %>
 
