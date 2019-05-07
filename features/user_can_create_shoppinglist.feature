@@ -39,19 +39,13 @@ Feature: User can create shopping list from ingredients
 
   Scenario: User creates a shoppinglist
     Given I am on the menu page
-      And I click "Create shoppinglist"
-    Then I should see "Shoppinglist has been created"
-      And the shoppinglist should contain "quantity: 1 item: Minced meat"
-      And the shoppinglist should contain "quantity: 2 item: Bacon"
-      And the shoppinglist should contain "quantity: 5 item: Bread"
-      And the shoppinglist should contain "quantity: 10 item: Salad"
-      And the shoppinglist should contain "quantity: 1 item: Mango"
-    When I am on the shoppinglist page
-    Then I should see "quantity: 1 item: Minced meat"
-    Then I should see "quantity: 2 item: Bacon"
-    Then I should see "quantity: 5 item: Bread"
-    Then I should see "quantity: 10 item: Salad"
-    Then I should see "quantity: 1 item: Mango"
+      And I click "My shoppinglist"
+    Then I am on the shoppinglist page
+      And I should see "Minced meat"
+      And I should see "Bacon"
+      And I should see "Bread"
+      And I should see "Salad"
+      And I should see "Mango"
 
 
 
