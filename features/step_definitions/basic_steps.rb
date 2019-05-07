@@ -68,6 +68,3 @@ Given("I am on the menu page") do
   visit menu_path(@user.menu)
 end
 
-When("I am on the shoppinglist page") do
-  pending # Write code here that turns the phrase above into concrete actions
-end

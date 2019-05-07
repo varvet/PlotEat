@@ -40,8 +40,7 @@ Feature: User can create shopping list from ingredients
   Scenario: User creates a shoppinglist
     Given I am on the menu page
       And I click "My shoppinglist"
-    Then I am on the shoppinglist page
-      And I should see "Minced meat"
+    Then I should see "Ground beef"
       And I should see "Bacon"
       And I should see "Bread"
       And I should see "Salad"
