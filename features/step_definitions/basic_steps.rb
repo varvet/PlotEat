@@ -42,8 +42,29 @@ Given("we have the following users") do |table|
 end
 
 Given("logged in as {string} password {string}") do |email, password|
+  @user = User.find_by email: email
   click_on "Log in"
   fill_in "Email", with: email
   fill_in "Password", with: password
   click_on "Submit"
 end
+
+Given("{string} has these ingredients") do |recipe_title, table|
+  recipe = Recipe.find_by(title: recipe_title)
+  table.hashes.each do |ingredient|
+    recipe.ingredients.create(ingredient)
+  end
+end
+
+Given("{string} has the following recipes in his menu") do |email, table|
+  user = User.find_by(email: email)
+  table.hashes.each do |recipe|
+    recipe = Recipe.find_by(title: recipe[:title])
+    user.menu.recipes << recipe
+  end
+end
+
+Given("I am on the menu page") do
+  visit menu_path(@user.menu)
+end
+

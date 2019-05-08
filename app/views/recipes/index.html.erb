@@ -2,13 +2,12 @@
 
   <h2 class="recipe_title">Recipes</h2>
 
-  <br/>
   <div class="recipe_grid">
-    <div></div>
+  <div></div>
     <div class="recipes_list">
       <% @recipes.each do |recipe| %>
-        <div id="<%=dom_id(recipe)%>"><%= link_to recipe.title, recipe_path(recipe) %>
-          <%= link_to "Add to menu", menu_path(current_user.menu, params: {recipe_id: recipe.id}), method: :put, class: "btn btn-outline-dark" unless current_user.nil? %>  </div>
+        <div class="recipe_link" ><%= link_to recipe.title, recipe_path(recipe), class: 'recipes_list' %></div>
+        <div class="add_to_menu" id="<%=dom_id(recipe)%>"><%= link_to "Add to menu", menu_path(@menu, params: {recipe_id: recipe.id}), method: :put, class: "btn btn-outline-dark" %></div>
       <% end %>
     </div>
     <div></div>
