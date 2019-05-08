@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   def index
     @recipes = Recipe.all
-    # @menu = current_user.menu if current_user
+    @menu = current_user ? current_user.menu : Menu.first
   end
 
   def show
