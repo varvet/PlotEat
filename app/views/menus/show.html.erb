@@ -1,0 +1,10 @@
+<h2 class="menu_title">My Menu</h2>
+
+<div class="show_menu">
+<br>
+<% @menu.recipes.each do |recipe| %>
+<p><%= recipe.title %></p>
+<% end %>
+<%= link_to  "My shoppinglist", shoppinglist_path, class: "btn btn-outline-dark" %>
+
+</div>

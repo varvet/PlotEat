@@ -1,0 +1,19 @@
+<div class="edit_recipe">
+  <%= form_with model: @recipe do |form| %>
+    <%= form.text_field :title, placeholder: "Recipe title", class: "form-control" %>
+    <%= form.text_area :description, placeholder: "Recipe description", class: "form-control" %>
+    <%= form.submit "Edit", class: "btn btn-primary" %>
+  <% end %> 
+
+  <%= form_with url: recipe_ingredients_path(@recipe), local: false do |form| %>
+    <%= form.text_field :name, placeholder: "Ingredient name", class: "form-control" %>
+    <%= form.number_field :quantity, placeholder: "Ingredient quantity", class: "form-control" %>
+    <%= form.submit "Add ingredient", class: "btn btn-primary"%>
+  <% end %>
+
+
+  <div class="ingredients" id="ingredients">
+      <%= render partial: 'partials/ingredients'%>
+  </div>
+  <%= link_to  "Back", :back, class: "btn btn-primary" %>
+</div>

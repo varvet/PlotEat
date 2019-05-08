@@ -1,0 +1,7 @@
+<div class="show_recipe">
+    <%= link_to  "Edit recipe", edit_recipe_path, class: "btn btn-primary"%>
+    <h2><%= @recipe.title %></h2>
+    <%= render partial: 'partials/ingredients'%>
+    <p><%= @recipe.description %></p>
+    <%= link_to  "Back", :back, class: "btn btn-primary" %>
+</div>

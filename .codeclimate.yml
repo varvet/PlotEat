@@ -1,0 +1,71 @@
+
+---
+version: "2"
+
+checks:
+  argument-count:
+    config:
+      threshold: 8 # default: 4
+  complex-logic:
+    config:
+      threshold: 8 # default: 4
+  file-lines:
+    config:
+      threshold: 1000 # default: 250
+  method-complexity:
+    config:
+      threshold: 10 # default: 5
+  method-count:
+    config:
+      threshold: 50 # default: 20
+  method-lines:
+    config:
+      threshold: 100 # default: 25
+  nested-control-flow:
+    config:
+      threshold: 8 # default: 4
+  return-statements:
+    config:
+      threshold: 8 # default: 4
+  similar-code:
+    config:
+      threshold: # language-specific defaults. an override will affect all languages.
+  identical-code:
+    config:
+      threshold: # language-specific defaults. an override will affect all languag
+plugins:
+  brakeman:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  coffeelint:
+    enabled: true
+    checks:
+      coffeescript_error:
+        enabled: false
+  duplication:
+    enabled: true
+    exclude_patterns:
+    - config/initializers/simple_form_bootstrap.rb
+    - config/webpack/*.js
+    - db/seeds.rb
+    - spec/
+    # duplication in spec files are not always a bad thing
+    # removing all duplication in specs would result in very
+    # "smart" tests that would be lose a lot in readability.
+    config:
+      languages:
+      - ruby
+      - javascript
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: true
+    channel: rubocop-0-48
+    config:
+      file: .rubocop.yml
+exclude_patterns:
+- Rakefile
+- .rubocop.yml

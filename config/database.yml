@@ -1,0 +1,26 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: PlotEat_development
+
+
+test: &test
+  <<: *default
+  database: PlotEat_test
+
+
+production:
+  <<: *default
+  database: PlotEat_production
+  username: PlotEat
+  password: <%= ENV['PLOTEAT_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
