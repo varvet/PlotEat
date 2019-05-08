@@ -45,13 +45,21 @@
 
 .recipe_grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 650px 1fr;
 }
 
 .recipes_list {
-  text-align: right;
+  display: grid;
+  grid-template-columns: 2fr 1fr
 }
 
+.recipe_link {
+  text-align: left;
+}
+
+.add_to_menu {
+  text-align: right;
+}
 .recipes_list a {
   color: #026670;
 }
@@ -106,8 +114,20 @@
   font-family: 'Courgette', cursive;
   font-size: 4rem;
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .show_shoppinglist {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+
+.left {
+text-align: right;
+padding-right: 5px;
+}
+
+.right {
+text-align: left;
+padding-left: 5px;
 }
