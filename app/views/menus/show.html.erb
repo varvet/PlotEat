@@ -3,6 +3,7 @@
 <div class="show_menu">
 <br>
 <% @menu.recipes.each do |recipe| %>
+<div class="remove_from_menu" id="<%=dom_id(recipe)%>"><%= link_to "Remove from menu", menu_path(@menu, params: {recipe_id: recipe.id}), method: :put, class: "btn btn-outline-dark" %></div>
 <p><%= recipe.title %></p>
 <% end %>
 <%= link_to  "My shoppinglist", shoppinglist_path, class: "btn btn-outline-dark" %>
