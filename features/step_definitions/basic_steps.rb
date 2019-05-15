@@ -67,4 +67,3 @@ end
 Given("I am on the menu page") do
   visit menu_path(@user.menu)
 end
-

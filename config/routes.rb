@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :ingredients, only: [:create]
   end
-  resources :menus, only: %i[show update]
+  resources :menus, only: %i[show update destroy]
 
   resources :users, only: %i[new create]
   get "/sign_up", to: "users#new", as: :sign_up

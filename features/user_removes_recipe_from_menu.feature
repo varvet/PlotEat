@@ -16,14 +16,20 @@ Feature: User can remove recipe from menu
       | Granny's meatloaf   | With love from Granny! |
       | Summer salad        | It will feed your soul |
       | Heart warming cacao | Nice and toasty        |
-      And there is a menu
+
+      And "groot@theguardians.com" has the following recipes in his menu
+      | title             |
+      | Granny's meatloaf |
+      | Summer salad      |
+
       And I visit the site
       And logged in as "groot@theguardians.com" password "iamgroot"
 
   Scenario: User removes recipe from menu
     Given I am on the menu page
-    When I click "Remove from menu" for "Summer salad "
-    Then I should see "Granny's meatloaf"
+    When I click "Remove from menu" for "Summer salad"
+    Then I should see "Recipe was successfully removed."
+      And I should see "Granny's meatloaf"
       And I sould not see "Summer salad"
 
 
