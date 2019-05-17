@@ -32,4 +32,3 @@ Feature: User can remove recipe from menu
       And I should see "Granny's meatloaf"
       And I sould not see "Summer salad"
 
-

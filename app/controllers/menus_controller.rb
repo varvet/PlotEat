@@ -15,7 +15,7 @@ class MenusController < ApplicationController
   def destroy
     @menu = Menu.find(params[:id])
     recipe = Recipe.find(params[:recipe_id])
-    if @menu.recipes.delete(recipe.id)
+    if @menu.user == current_user && @menu.recipes.destroy(recipe.id)
       flash[:success] = "Recipe was successfully removed."
       redirect_to menu_path(@menu)
     else
