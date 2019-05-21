@@ -13,6 +13,10 @@ Then("I sould not see {string}") do |expected_text|
   expect(page).to have_no_content expected_text
 end
 
+Then("I should be on the index page") do
+  expect(current_path).to eq root_path
+end
+
 Then("I should be on the log in page") do
   expect(current_path).to eq log_in_path
 end
