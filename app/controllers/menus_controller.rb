@@ -17,10 +17,9 @@ class MenusController < ApplicationController
     recipe = Recipe.find(params[:recipe_id])
     if @menu.user == current_user && @menu.recipes.destroy(recipe.id)
       flash[:success] = "Recipe was successfully removed."
-      redirect_to menu_path(@menu)
     else
       flash[:error] = "Something went wrong"
-      redirect_to menu_path(@menu)
     end
+    redirect_to menu_path(@menu)
   end
 end
