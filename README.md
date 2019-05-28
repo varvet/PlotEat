@@ -1,63 +1,84 @@
 # PlotEat
 
-PlotEat is an meal planing shopping list app
+PlotEat is an meal planing shopping list app, available at https://ploteat.herokuapp.com/ . 
 
-## Getting Started
+## Architecture
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This is a Rails applicaction that allows you to store recipes, create a menu with your recipes and create a shopping list from the recipes that are on the menu.
 
-### Prerequisites
+## Development
 
-In order to get the platform running, you need the following:
+Instructions for how to set up, work with and deploy the project.
 
-* Rails version 5.2.3
-* Ruby version 2.5.2
-* Bundler
 
-### Installation
+### Dependencies
 
-In order to run the platform after cloning, you need to run bundler using
+This is a
+*[Ruby](https://www.ruby-lang.org)*
+project. `bin/setup` will guide you through installing the required language(s). If you prefer to do this manually, or
+know that you already have the requirements installed `bin/setup` will allow you to skip the language setup and allow
+you to proceed with installing your language(s) manually as you see fit.
 
-```
-bundle install
-```
+* Ruby gems: [Gemfile](Gemfile)
 
-Database needs to be created, migrated and seed loaded using the following
+### Services
 
-```
-rails db:create db:migrate db:seed
-```
+- E.g. [Heroku](https://www.heroku.com): Used for hosting
+- E.g. [Code Climate](https://codeclimate.com): Used for code quality
+- E.g. [Travis CI](https://travis-ci.com): Used for running tests before deploys
 
-## Running the tests
+### Setup
 
-PlorEat uses Cucumber for acceptance test and Rspec for unit test.
-
-To run the tests individually, use the following for acceptance test
-
-```
-bundle exec cucumber
+```sh
+$ bin/setup
 ```
 
-and for unit test
+Seed test data:
 
-```
-bundle exec rspec
-```
-
-To run both  tests in one command, run
-
-```
-bundle exec rake
+```sh
+$ bin/rails db:seed
 ```
 
-## Deployment
+### Running the project
 
-The host should be able to run the prerequisted servers.
-Deployment has been implemented successfully on Heroku.
+```sh
+$ bin/rails server
+```
 
+### Tests
 
-## Author
+Run all tests:
 
-Agnes Konráðsdóttir
+```sh
+$ bin/rake
+```
+Run rspec:
 
-## License
+```sh
+$ bin/rspec
+```
+
+Run a single rspec file:
+
+```sh
+$ bin/rspec spec/.../spec.rb
+```
+Run acceptance tests:
+
+```sh
+$ bundle exec cucumber
+```
+Run a single acceptance test file file:
+
+```sh
+$ bundle exec cucumber features/.../feature.rb
+```
+
+### Deployment
+
+This project is deployed using [Heroku]
+It is set up to automatically deploy to staging when changes are made to master.
+
+### Environments
+
+- Staging: https://ploteat.herokuapp.com/
