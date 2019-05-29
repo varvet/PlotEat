@@ -1,14 +1,19 @@
-<div class="header">
-  <%= link_to  "Home", root_path, class: "btn btn-outline-dark" %>
-  <%= link_to  "Create recipe", new_recipe_path, class: "btn btn-outline-dark" %>
-
+<div class="header d-flex">
+  <div class="col">
+    <%= link_to  "Home", root_path, class: "btn btn-outline-dark" %>
+    <%= link_to  "Create recipe", new_recipe_path, class: "btn btn-outline-dark" %>
+    <% if current_user %>
+      <%= link_to  "My menu", menu_path(current_user.menu) , class: "btn btn-outline-dark" %> 
+    <% end %>
+  </div>
   
   <% if current_user %>
-    <%= current_user.email %>
-    <%= link_to  "My menu", menu_path(current_user.menu) , class: "btn btn-outline-dark" %> 
-    <%= link_to 'Log out', log_out_path, method: :delete, class: "btn btn-outline-dark"%>
-    <% else %>
-    <%= link_to  "Sign up", sign_up_path, class: "btn btn-outline-dark" %>
-    <%= link_to  "Log in", log_in_path, class: "btn btn-outline-dark" %>
-  <% end %>
+    <div class= "col d-flex align-items-center justify-content-end">
+      <%= current_user.email %>
+      <%= link_to "Log out", log_out_path, method: :delete, class: "btn btn-outline-dark "%>
+      <% else %>
+      <%= link_to  "Sign up", sign_up_path, class: "btn btn-outline-dark" %>
+      <%= link_to  "Log in", log_in_path, class: "btn btn-outline-dark" %>
+    <% end %>
+  </div>
 </div>
